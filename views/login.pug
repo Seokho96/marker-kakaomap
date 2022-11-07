@@ -6,11 +6,14 @@ html
     meta(name='viewport' content='initial-scale=1, width=device-width')
     link(rel='stylesheet' href='css/login-style.css')
   body
-    form(method='post' action='/login-page')
-      .id
-        label(for='id') ID 
-        input(type='text' id='id' name='id' placeholder='ID')
-      .pwd
-        label(for='pwd') Password
-        input(type='password' id='pwd' name='pwd' placeholder='Password')
-      input(type='submit' value='Login')
+    div(class='login')
+     h1 카카오맵 
+     h1 반자동화 1.0 ver 
+     form(method='post' action='/login-page')
+        .id
+          label(for='id')  
+          input(type='text' id='id' name='id' placeholder='ID')
+        .pwd
+          label(for='pwd')
+          input(type='password' id='pwd' name='pwd' placeholder='Password')
+        input(type='submit' value='Login')

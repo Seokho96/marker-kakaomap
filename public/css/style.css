@@ -14,16 +14,14 @@
   width: 100%;
 }
 .clearfix > p:last-of-type {
-  position: absolute;
   right: 0;
   z-index: 1;
-  float: right;
-  text-align: right;
+  text-align: center;
 }
 
-#result { 
+#result {
   margin: 10px auto;
-  padding: 15px; 
+  padding: 15px;
   border-top: 2px dashed #000;
   border-bottom: 2px dashed #000;
 }

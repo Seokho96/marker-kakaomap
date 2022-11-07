@@ -6,7 +6,9 @@ html
     meta(name='viewport' content='initial-scale=1, width=device-width')
     link(rel='stylesheet' href='css/upload-style.css')
   body
-    div
+    div(style='text-align:center')
+      h1 엑셀 파일 등록 
+    div(class='upload')
       form(method='post' enctype='multipart/form-data' action='/upload-page')
         input(type='file' name='excel' accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" )
         input(type='submit')

@@ -1,9 +1,13 @@
 body {
-  min-width: 90vh;
+  min-width: 90vw;
   min-height: 90vh;
+}
+.upload {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  min-height: 55vh;
 }
 input {
   margin: 10px;

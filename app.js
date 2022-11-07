@@ -60,7 +60,6 @@ app.post("/login-page", (req, res, next) => {
 
 app.route("/upload-page").post(upload.array("excel", 1), (req, res, next) => {
   try {
-    console.log(req);
     parseExcel(req.files[0]);
     res.render("main.pug", { key }, (err, html) => {
       if (err) throw err;
