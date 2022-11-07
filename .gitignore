@@ -1,0 +1,7 @@
+node_modules
+sessions
+~$map.xlsx
+map.xlsx
+public/latlng.json
+public/multi-latlng.json
+beforeStart.md
