@@ -212,24 +212,51 @@ const fetchData = async () => {
       removable: iwRemoveable,
     });
 
-    // 마커에 클릭이벤트를 등록합니다
-    kakao.maps.event.addListener(marker, "click", function () {
-      // // 마커 위에 인포윈도우를 표시합니다
-      // infowindow.open(map, marker);
-      let message = `주소: ${position.roadName} <br>`;
-      message += `즐겨찾기 이름: ${position.favSaveNm}<br>`;
-      message += `위도 : ${marker.getPosition().getLat().toFixed(6)} `;
-      message += `경도 : ${marker.getPosition().getLng().toFixed(6)}`;
+    // 모바일 일 경우
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      kakao.maps.event.addListener(marker, "click", function () {
+        // // 마커 위에 인포윈도우를 표시합니다
+        // infowindow.open(map, marker);
+        let message = `주소: ${position.roadName} <br>`;
+        message += `즐겨찾기 이름: ${position.favSaveNm}<br>`;
+        message += `위도 : ${marker.getPosition().getLat().toFixed(6)} `;
+        message += `경도 : ${marker.getPosition().getLng().toFixed(6)}`;
 
-      const resultDiv = document.getElementById("result");
-      resultDiv.innerHTML = message;
-    });
-    kakao.maps.event.addListener(marker, "rightclick", function () {
-      let url = `${position.favSaveNm},`;
-      url += `${marker.getPosition().getLat().toFixed(6)},`;
-      url += `${marker.getPosition().getLng().toFixed(6)}`;
-      window.open(`https://map.kakao.com/link/map/${url}`, "_blank");
-    });
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = message;
+
+        let url = `${position.favSaveNm},`;
+        url += `${marker.getPosition().getLat().toFixed(6)},`;
+        url += `${marker.getPosition().getLng().toFixed(6)}`;
+        window.open(`https://map.kakao.com/link/map/${url}`, "_blank");
+      });
+    }
+    // pc일 경우
+    else {
+      // 마커에 클릭이벤트를 등록합니다
+      kakao.maps.event.addListener(marker, "click", function () {
+        // // 마커 위에 인포윈도우를 표시합니다
+        // infowindow.open(map, marker);
+        let message = `주소: ${position.roadName} <br>`;
+        message += `즐겨찾기 이름: ${position.favSaveNm}<br>`;
+        message += `위도 : ${marker.getPosition().getLat().toFixed(6)} `;
+        message += `경도 : ${marker.getPosition().getLng().toFixed(6)}`;
+
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = message;
+      });
+
+      kakao.maps.event.addListener(marker, "rightclick", function () {
+        let url = `${position.favSaveNm},`;
+        url += `${marker.getPosition().getLat().toFixed(6)},`;
+        url += `${marker.getPosition().getLng().toFixed(6)}`;
+        window.open(`https://map.kakao.com/link/map/${url}`, "_blank");
+      });
+    }
   });
 };
 
