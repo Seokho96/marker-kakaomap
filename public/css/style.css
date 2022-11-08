@@ -26,10 +26,39 @@
   border-bottom: 2px dashed #000;
 }
 
-#map {
-  max-width: 100%;
+#map-div {
   min-height: 70vh;
   height: auto;
+  max-height: 70vh;
+}
+
+#map {
+  min-height: 70vh;
+  height: auto;
+  min-width: 1100px;
+}
+
+#map-first {
+  max-width: 60%;
+  min-height: 70vh;
+  float: left;
+  height: auto;
+}
+#map-second {
+  max-width: 40%;
+  min-height: 70vh;
+  max-height: 70vh;
+  overflow: auto;
+  float: right;
+  height: auto;
+  text-align: left;
+}
+
+.store-name {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 input[type="text"] {

@@ -46,6 +46,7 @@ kakao.maps.event.addListener(map, "rightclick", function (mouseEvent) {
 const searchFunc = () => {
   if (search.value.trim() === "") return;
   searchPlace = search.value.trim();
+  console.log(searchPlace);
   ps.keywordSearch(searchPlace, placesSearchCB);
 };
 
@@ -175,7 +176,62 @@ const fetchData = async () => {
   const imageSrc =
     "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 
-  positions.map((position) => {
+  let stores = "";
+
+  const mapSecond = document.getElementById("map-second");
+
+  const notIncludeWords = [
+    "1층",
+    "2층",
+    "3층",
+    "4층",
+    "5층",
+    "6층",
+    "7층",
+    "8층",
+    "9층",
+    "10층",
+    "11층",
+    "12층",
+    "13층",
+    "14층",
+    "15층",
+    "16층",
+    "17층",
+    "18층",
+    "19층",
+    "20층",
+    "21층",
+  ];
+
+  positions.map((position, index) => {
+    const anchor = document.createElement("a");
+    const br = document.createElement("br");
+    const br2 = document.createElement("br");
+    mapSecond.appendChild(anchor);
+    mapSecond.appendChild(br);
+    mapSecond.appendChild(br2);
+    anchor.textContent = position.favSaveNm;
+    anchor.className = "store-name";
+    anchor.id = "store_" + index;
+    anchor.addEventListener("click", (e) => {
+      let value = position.roadName
+        .split(",")[0]
+        .split("(")[0]
+        .replaceAll(".", "");
+
+      for (let i = 0; i < notIncludeWords.length; i++) {
+        const item = notIncludeWords[i];
+        if (value.indexOf(item) != -1) {
+          value = value.replaceAll(item, "");
+          break;
+        }
+      }
+      search.value = value;
+      navigator.clipboard.writeText(position.favSaveNm);
+      searchFunc();
+    });
+
     // 마커 이미지의 이미지 크기 입니다
     const imageSize = new kakao.maps.Size(24, 35);
 

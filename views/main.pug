@@ -14,7 +14,11 @@ html(lang="ko")
       div
         input(type="checkbox" id='roadview' onclick="setOverlayMapTypeId('roadview')")
         strong 로드뷰 보기
-    #map
+    #map-div 
+      #map-first
+        #map
+      #map-second
+        p 클릭 시 해당 지점 주소로 검색 됩니다.
     #result
       p
         |지도를 클릭하면 해당 부분의 위도와 경도 정보를 볼 수 있습니다.
