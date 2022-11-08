@@ -214,6 +214,7 @@ const fetchData = async () => {
     anchor.textContent = position.favSaveNm;
     anchor.className = "store-name";
     anchor.id = "store_" + index;
+    anchor.setAttribute("data-clipboard-text", position.favSaveNm);
     anchor.addEventListener("click", (e) => {
       let value = position.roadName
         .split(",")[0]
@@ -228,9 +229,10 @@ const fetchData = async () => {
         }
       }
       search.value = value;
-      navigator.clipboard.writeText(position.favSaveNm);
       searchFunc();
     });
+
+    new ClipboardJS(anchor);
 
     // 마커 이미지의 이미지 크기 입니다
     const imageSize = new kakao.maps.Size(24, 35);
